@@ -1,0 +1,81 @@
+<div class="p-8 space-y-6">
+
+    <!-- Back -->
+    <button class="text-sm text-gray-500 hover:text-gray-700" (click)="goBack()">
+        ← Back to Documents
+    </button>
+
+    @if (loading()) {
+    <p class="text-gray-500">Loading document...</p>
+    }
+
+    @if (document()) {
+
+    <!-- Title -->
+    <h1 class="text-2xl font-semibold text-gray-800">
+        Title: {{ document()?.title }}
+    </h1>
+
+    <p class="text-sm text-gray-500 mt-1">
+        {{ document()?.original_filename }}
+    </p>
+
+
+    <!-- Tabs -->
+    <div class="flex gap-10 border-b mt-6 text-gray-600">
+
+        <button class="pb-3 border-b-2 transition" [class.border-blue-600]="activeTab() === 'content'"
+            [class.text-blue-600]="activeTab() === 'content'" (click)="setTab('content')">
+            Content
+        </button>
+
+        <button class="pb-3 border-b-2 transition" [class.border-blue-600]="activeTab() === 'chat'"
+            [class.text-blue-600]="activeTab() === 'chat'" (click)="setTab('chat')">
+            Chat
+        </button>
+
+        <button class="pb-3 border-b-2 transition" [class.border-blue-600]="activeTab() === 'actions'"
+            [class.text-blue-600]="activeTab() === 'actions'" (click)="setTab('actions')">
+            AI Actions
+        </button>
+
+        <button class="pb-3 border-b-2 transition" [class.border-blue-600]="activeTab() === 'flashcards'"
+            [class.text-blue-600]="activeTab() === 'flashcards'" (click)="setTab('flashcards')">
+            Flashcards
+        </button>
+
+        <button class="pb-3 border-b-2 transition" [class.border-blue-600]="activeTab() === 'quizzes'"
+            [class.text-blue-600]="activeTab() === 'quizzes'" (click)="setTab('quizzes')">
+            Quizzes
+        </button>
+
+    </div>
+
+    <!-- TAB CONTENT -->
+    <div class="mt-6">
+
+        @if (activeTab() === 'content') {
+        <app-content-tab [pdfUrl]="pdfUrl()" />
+        }
+
+        @if (activeTab() === 'chat') {
+        <app-chat-tab [documentId]="documentId" />
+        }
+
+
+        @if (activeTab() === 'actions') {
+        <app-ai-actions-tab />
+        }
+
+        @if (activeTab() === 'flashcards') {
+        <app-flashcards-tab />
+        }
+
+        @if (activeTab() === 'quizzes') {
+        <app-quizzes-tab />
+        }
+
+    </div>
+    }
+
+</div>

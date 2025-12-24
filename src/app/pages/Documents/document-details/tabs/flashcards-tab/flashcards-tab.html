@@ -1,0 +1,44 @@
+@if (flashcards().length === 0) {
+<div class="flex flex-col items-center text-center py-20">
+
+    <div class="text-5xl mb-4 text-green-500">🧠</div>
+
+    <h2 class="text-xl font-semibold text-gray-800 mb-2">
+        No Flashcards Yet
+    </h2>
+
+    <p class="text-gray-500 max-w-md mb-6">
+        Generate flashcards from your document to start learning and reinforce your knowledge.
+    </p>
+
+    <button class="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg shadow transition"
+        (click)="generateFlashcards()">
+        + Generate Flashcards
+    </button>
+</div>
+}@else {
+<div class="flex justify-between items-center mb-6">
+    <h2 class="text-xl font-semibold text-gray-800">Your Flashcard Sets</h2>
+
+    <button class="px-5 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg" (click)="generateFlashcards()">
+        + Generate New Set
+    </button>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+    @for (set of flashcards(); track set.id) {
+    <div class="border rounded-xl p-6 shadow hover:shadow-md cursor-pointer transition">
+
+        <div class="text-4xl text-green-500 mb-3">🧠</div>
+
+        <h3 class="font-semibold text-gray-800 mb-1">Flashcard Set</h3>
+        <p class="text-gray-500 text-sm mb-4">Created {{ set.created }}</p>
+
+        <span class="inline-block px-3 py-1 bg-green-100 text-green-700 rounded-md text-sm">
+            {{ set.count }} cards
+        </span>
+    </div>
+    }
+</div>
+}

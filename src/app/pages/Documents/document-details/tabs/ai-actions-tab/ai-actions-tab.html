@@ -1,0 +1,37 @@
+<h2 class="text-xl font-semibold text-gray-800 mb-4">AI Actions</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <button (click)="generateSummary()" class="p-6 bg-white border rounded-xl shadow hover:shadow-md flex gap-4">
+        <div class="text-2xl">📄</div>
+        <div>
+            <h3 class="font-semibold text-lg">Generate Summary</h3>
+            <p class="text-gray-600">AI summarizes the document.</p>
+        </div>
+    </button>
+
+    <button (click)="extractKeyPoints()" class="p-6 bg-white border rounded-xl shadow hover:shadow-md flex gap-4">
+        <div class="text-2xl">🔑</div>
+        <div>
+            <h3 class="font-semibold text-lg">Key Points</h3>
+            <p class="text-gray-600">Extract important concepts.</p>
+        </div>
+    </button>
+
+    <button (click)="generateFlashcards()" class="p-6 bg-white border rounded-xl shadow hover:shadow-md flex gap-4">
+        <div class="text-2xl">🧠</div>
+        <div>
+            <h3 class="font-semibold text-lg">Generate Flashcards</h3>
+            <p class="text-gray-600">Create study flashcards.</p>
+        </div>
+    </button>
+
+    <button (click)="generateQuizzes()" class="p-6 bg-white border rounded-xl shadow hover:shadow-md flex gap-4">
+        <div class="text-2xl">❓</div>
+        <div>
+            <h3 class="font-semibold text-lg">Generate Quizzes</h3>
+            <p class="text-gray-600">Create practice questions.</p>
+        </div>
+    </button>
+
+</div>

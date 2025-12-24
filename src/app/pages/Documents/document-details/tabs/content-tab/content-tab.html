@@ -1,0 +1,15 @@
+<div class="mt-6">
+
+
+    @if (pdfUrl) {
+    <a class="text-blue-600 hover:text-blue-800 text-sm" [href]="pdfUrl" target="_blank">
+        Open in new tab ↗
+    </a>
+    <iframe [src]="pdfUrl" class="w-full h-[80vh] border rounded-lg shadow"></iframe>
+
+
+    } @else {
+    <p class="text-gray-500">No document available.</p>
+    }
+
+</div>

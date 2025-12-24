@@ -1,0 +1,26 @@
+<div class="quizzes-tab">
+
+    <button class="generate-btn" (click)="openGenerateModal()">
+        + Generate Quiz
+    </button>
+
+    <div class="quiz-list">
+
+        @for (quiz of quizzes; track quiz.id) {
+        <div class="quiz-card">
+
+            <div class="score">Score: {{ quiz.score }}</div>
+            <div class="title">{{ quiz.title }}</div>
+            <div class="date">Created {{ quiz.createdAt | date }}</div>
+            <div class="count">{{ quiz.questionsCount }} Questions</div>
+
+            <div class="actions">
+                <button class="start" (click)="startQuiz(quiz.id)">Start Quiz</button>
+                <button class="results" (click)="viewResults(quiz.id)">View Results</button>
+            </div>
+
+        </div>
+        }
+
+    </div>
+</div>

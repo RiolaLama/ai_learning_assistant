@@ -1,0 +1,23 @@
+<h1>{{ quiz()?.title }}</h1>
+
+<div class="progress">
+    Question {{ currentIndex() + 1 }} of {{ quiz()?.questions.length }}
+</div>
+
+<h2>{{ question()?.question }}</h2>
+
+<div class="options">
+    @for (opt of question()?.options; track $index) {
+    <button class="option" (click)="selectAnswer($index)">
+        {{ opt }}
+    </button>
+    }
+</div>
+
+<div class="nav">
+    @if (currentIndex() > 0) {
+    <button (click)="prev()">Previous</button>
+    }
+
+    <button (click)="next()">Next</button>
+</div>

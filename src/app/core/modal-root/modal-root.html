@@ -1,0 +1,39 @@
+@if (modalService.isOpen()) {
+<div class="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
+
+    <div class="bg-white rounded-xl shadow-xl w-[90%] max-w-2xl p-6 relative">
+
+        <button class="absolute top-4 right-4" (click)="close()">✕</button>
+
+        <!-- Upload Modal -->
+        @if (modalService.modalType() === 'upload') {
+        <app-upload-modal />
+        }
+
+        <!-- Delete Modal -->
+        @if (modalService.modalType() === 'delete') {
+        <app-delete-modal [data]="modalService.modalData()" />
+        }
+
+        <!-- Generate Quiz Modal -->
+        @if (modalService.modalType() === 'generate-quiz') {
+        <app-quiz-modal />
+        }
+
+
+
+        <!-- AI Summary Modal (GENERAL MODAL) -->
+        @if (modalService.modalType() && (
+        modalService.modalType() === 'summary' ||
+        modalService.modalType() === 'keypoints' ||
+        modalService.modalType() === 'flashcards' ||
+        modalService.modalType() === 'quizzes'
+        )) {
+
+        <app-summary-modal [type]="modalService.modalType()!" [data]="modalService.modalData()" />
+        }
+
+    </div>
+
+</div>
+}

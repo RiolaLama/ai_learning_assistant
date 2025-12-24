@@ -1,0 +1,25 @@
+<h1>{{ quiz()?.title }} - Results</h1>
+
+<div class="summary">
+    <h2>{{ scorePercent | number:'1.0-0' }}%</h2>
+
+    <p>Keep practicing!</p>
+
+    <div class="stats">
+        <span>{{ quiz()?.questions.length }} Total</span>
+        <span>{{ quiz()?.score }} Correct</span>
+        <span>{{ quiz()?.questions.length - quiz()?.score }} Incorrect</span>
+    </div>
+</div>
+
+<h3>Detailed Review</h3>
+
+<div class="review-list">
+    @for (q of quiz()?.questions; track q.id) {
+    <div class="review-item">
+        <p><strong>{{ q.text }}</strong></p>
+        <p>Your Answer: {{ q.userAnswer }}</p>
+        <p>Correct Answer: {{ q.correct }}</p>
+    </div>
+    }
+</div>

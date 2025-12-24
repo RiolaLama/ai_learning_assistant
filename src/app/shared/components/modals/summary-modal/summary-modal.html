@@ -1,0 +1,40 @@
+<h2 class="text-xl font-semibold mb-4">
+    @if (type === 'summary') { Generated Summary }
+    @if (type === 'keypoints') { Key Points }
+    @if (type === 'flashcards') { Flashcards }
+    @if (type === 'quizzes') { Generated Quizzes }
+</h2>
+
+<div class="max-h-[70vh] overflow-y-auto pr-2">
+
+    @if (type === 'summary') {
+    <p class="text-gray-700 whitespace-pre-line">{{ data }}</p>
+    }
+
+    @if (type === 'keypoints') {
+    <ul class="list-disc pl-6 space-y-2 text-gray-700">
+        @for (point of data; track point) {
+        <li>{{ point }}</li>
+        }
+    </ul>
+    }
+
+    @if (type === 'flashcards') {
+    @for (card of data; track card.question) {
+    <div class="p-4 border rounded-lg mb-3">
+        <p class="font-semibold">{{ card.question }}</p>
+        <p class="text-gray-600">{{ card.answer }}</p>
+    </div>
+    }
+    }
+
+    @if (type === 'quizzes') {
+    @for (q of data; track q.question) {
+    <div class="p-4 border rounded-lg mb-3">
+        <p class="font-semibold">{{ q.question }}</p>
+        <p class="text-gray-600">Answer: {{ q.answer }}</p>
+    </div>
+    }
+    }
+
+</div>
